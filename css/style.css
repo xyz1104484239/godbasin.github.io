@@ -844,6 +844,13 @@ article header.article-info >p.article-time:before {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+article .author-right {
+  padding: 1.5em 8%;
+  line-height: 1.5em;
+  font-size: 80%;
+  border: solid 1px #ccc;
+  background: #ccc;
+}
 article .article-content {
   padding: 1.5em 4%;
 }
