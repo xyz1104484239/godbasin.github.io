@@ -1,10 +1,10 @@
 
- <!DOCTYPE HTML>
+  <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
-    <title>categories | Here. There.</title>
+    <title>Tag: 逻辑实现 | Here. There.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="被删">
@@ -66,23 +66,46 @@ var _hmt = _hmt || [];
 
       </header>
       <div id="container">
-          
+        
+
 <div class="archive-title" >
-<h2 class="category-icon">分类</h2>
-<div class="archiveslist archive-float clearfix">
-
-  <li><a class="archive-list-link" data-src="/categories/jQuery杂烩/" href="#jQuery杂烩" title="jQuery杂烩">jQuery杂烩<sup>2</sup></a></li>
-
-  <li><a class="archive-list-link" data-src="/categories/js什锦/" href="#js什锦" title="js什锦">js什锦<sup>2</sup></a></li>
-
-  <li><a class="archive-list-link" data-src="/categories/web乱炖/" href="#web乱炖" title="web乱炖">web乱炖<sup>1</sup></a></li>
- 
+  <h2 class="tag-icon">逻辑实现</h2>
+  
 </div>
-</div>
-<div id="main" class="all-list-box"><!--class: archive-part-->
-<div class=""></div><!--class: all-list-box-->
-</div>
+<div id="main" class="all-list-box clearfix"><!--class: archive-part-->
+  <div id="archive-page" class=""><!--class: all-list-box-->
 
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2016/06/20/responsive-waterfall/" title="jQuery响应式瀑布流" itemprop="url">
+  
+    <h1 itemprop="name">jQuery响应式瀑布流</h1>
+    
+     
+       <p itemprop="description" >之前用jQuery写过一个响应式的瀑布流。本文介绍实现方法。</p>
+      
+    
+    <time datetime="2016-06-20T12:42:49.000Z" itemprop="datePublished">2016-06-20</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2016/06/19/position-object/" title="js判断某个位置是否特定元素" itemprop="url">
+  
+    <h1 itemprop="name">js判断某个位置是否特定元素</h1>
+    
+     
+       <p itemprop="description" >需要获取鼠标所在位置是否为某种特定元素，然后进行相关处理。本文介绍一种实现方法。</p>
+      
+    
+    <time datetime="2016-06-18T16:15:36.000Z" itemprop="datePublished">2016-06-19</time>
+  </a>
+</section>
+
+
+  </div>
+</div>
 
       </div>
       <footer><div id="footer" >
@@ -146,24 +169,6 @@ $(document).ready(function(){
 
 
 
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var list    = $('.archive-title a'),
-      box     = $('.all-list-box'),
-      first   = $('.archive-title a:first-of-type');
-      box.load(first.attr('data-src').toString()+' #archive-page');
-      first.addClass('current');
-  list.each(function(){
-    $(this).click(function(){
-      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
-      box.load(listSrc);
-      list.removeClass('current');
-      $(this).addClass('current');
-     });  
-    });
-  }); 
-</script>
 
 
 
