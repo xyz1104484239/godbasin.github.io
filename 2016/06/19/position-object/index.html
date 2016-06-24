@@ -79,7 +79,7 @@ var _hmt = _hmt || [];
     </p>
   <p class="article-time">
     <time datetime="2016-06-18T16:15:36.000Z" itemprop="datePublished">2016-06-19</time>
-    更新日期:<time datetime="2016-06-21T12:46:17.000Z" itemprop="dateModified">2016-06-21</time>
+    更新日期:<time datetime="2016-06-24T14:03:13.000Z" itemprop="dateModified">2016-06-24</time>
     
   </p>
 </header>
@@ -88,15 +88,15 @@ var _hmt = _hmt || [];
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定鼠标事件"><span class="toc-number">1.</span> <span class="toc-text">绑定鼠标事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取鼠标坐标"><span class="toc-number">2.</span> <span class="toc-text">获取鼠标坐标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算鼠标位置"><span class="toc-number">3.</span> <span class="toc-text">计算鼠标位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取当前位置是否有特定元素"><span class="toc-number">4.</span> <span class="toc-text">获取当前位置是否有特定元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例：下拉菜单点击外围自动关闭"><span class="toc-number">5.</span> <span class="toc-text">实例：下拉菜单点击外围自动关闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束语"><span class="toc-number">6.</span> <span class="toc-text">结束语</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用坐标相关属性"><span class="toc-number">1.</span> <span class="toc-text">常用坐标相关属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定鼠标事件"><span class="toc-number">2.</span> <span class="toc-text">绑定鼠标事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取鼠标坐标"><span class="toc-number">3.</span> <span class="toc-text">获取鼠标坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算鼠标位置"><span class="toc-number">4.</span> <span class="toc-text">计算鼠标位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取当前位置是否有特定元素"><span class="toc-number">5.</span> <span class="toc-text">获取当前位置是否有特定元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例：下拉菜单点击外围自动关闭"><span class="toc-number">6.</span> <span class="toc-text">实例：下拉菜单点击外围自动关闭</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">7.</span> <span class="toc-text">结束语</span></a></li></ol>
 		</div>
 		
 		<p>需要获取鼠标所在位置是否为某种特定元素，然后进行相关处理。本文介绍一种实现方法。<br><a id="more"></a></p>
-<p>首先，获取鼠标坐标的兼容问题大家都很熟悉了。</p>
-<p>此处粘贴一些常用坐标相关属性：<br>  scrollHeight: 获取对象的滚动高度<br>  scrollLeft:设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离<br>  scrollTop:设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离<br>  scrollWidth:获取对象的滚动宽度<br>  offsetHeight:获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度<br>  offsetLeft:获取对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置<br>  offsetTop:获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置<br>  event.clientX 相对文档的水平座标<br>  event.clientY 相对文档的垂直座标<br>  event.offsetX 相对容器的水平坐标<br>  event.offsetY 相对容器的垂直坐标<br>  document.documentElement.scrollTop 垂直方向滚动的值<br>  event.clientX + document.documentElement.scrollTop 相对文档的水平座标+垂直方向滚动的量</p>
-<p>现在我们来获取鼠标位置</p>
-<h3 id="绑定鼠标事件"><a href="#绑定鼠标事件" class="headerlink" title="绑定鼠标事件"></a>绑定鼠标事件</h3><ul>
-<li>此处需对IE事件、FireFox事件等兼容</li>
+<h2 id="常用坐标相关属性"><a href="#常用坐标相关属性" class="headerlink" title="常用坐标相关属性"></a>常用坐标相关属性</h2><hr>
+<p>首先，获取鼠标坐标的兼容问题大家都很熟悉了。<br>此处粘贴一些常用坐标相关属性：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">scrollHeight <span class="comment">//获取对象的滚动高度</span></span><br><span class="line">scrollLeft <span class="comment">//设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离</span></span><br><span class="line">scrollTop <span class="comment">//设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离</span></span><br><span class="line">scrollWidth <span class="comment">//获取对象的滚动宽度</span></span><br><span class="line">offsetHeight <span class="comment">//获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度</span></span><br><span class="line">offsetLeft <span class="comment">//获取对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置</span></span><br><span class="line">offsetTop <span class="comment">//获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置</span></span><br><span class="line">event.clientX <span class="comment">//相对文档的水平座标</span></span><br><span class="line">event.clientY <span class="comment">//相对文档的垂直座标</span></span><br><span class="line">event.offsetX <span class="comment">//相对容器的水平坐标</span></span><br><span class="line">event.offsetY <span class="comment">//相对容器的垂直坐标</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.scrollTop 垂直方向滚动的值</span><br><span class="line">event.clientX + <span class="built_in">document</span>.documentElement.scrollTop <span class="comment">//相对文档的水平座标+垂直方向滚动的量</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="绑定鼠标事件"><a href="#绑定鼠标事件" class="headerlink" title="绑定鼠标事件"></a>绑定鼠标事件</h2><hr>
+<p>现在我们来获取鼠标位置<br>此处需对IE事件、FireFox事件等兼容</p>
+<ul>
 <li>绑定方式有几种<ul>
 <li>1.在元素中，onXXX（事件）绑定</li>
 <li>2.在Javascript代码中，获得元素并为元素的onXXX（事件）绑定</li>
@@ -104,20 +104,22 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.addEventListener) &#123;</span><br><span class="line">  element.addEventListener(event, eventFunction);<span class="comment">//IE之外的绑定事件方法</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  element.attachEvent(event, eventFunction);<span class="comment">//IE </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="获取鼠标坐标"><a href="#获取鼠标坐标" class="headerlink" title="获取鼠标坐标"></a>获取鼠标坐标</h3><ul>
-<li>IE中可以直接使用 event对象，而 FF中则不可以<ul>
+<h2 id="获取鼠标坐标"><a href="#获取鼠标坐标" class="headerlink" title="获取鼠标坐标"></a>获取鼠标坐标</h2><hr>
+<p>IE中可以直接使用 event对象，而 FF中则不可以</p>
+<ul>
 <li>1.window.event || arguments.callee.caller.arguments[0]获取event对象</li>
 <li>2.将 event 作为参数来传递, function xxx(e){var e = e || window.event;}</li>
 </ul>
-</li>
-</ul>
-<h3 id="计算鼠标位置"><a href="#计算鼠标位置" class="headerlink" title="计算鼠标位置"></a>计算鼠标位置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventX = e.pageX - scrollX || e.clientX ;</span><br><span class="line"><span class="keyword">var</span> eventY = e.pageY - scrollY || e.clientY ;</span><br></pre></td></tr></table></figure>
-<h3 id="获取当前位置是否有特定元素"><a href="#获取当前位置是否有特定元素" class="headerlink" title="获取当前位置是否有特定元素"></a>获取当前位置是否有特定元素</h3><ul>
+<h2 id="计算鼠标位置"><a href="#计算鼠标位置" class="headerlink" title="计算鼠标位置"></a>计算鼠标位置</h2><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventX = e.pageX - scrollX || e.clientX ;</span><br><span class="line"><span class="keyword">var</span> eventY = e.pageY - scrollY || e.clientY ;</span><br></pre></td></tr></table></figure>
+<h2 id="获取当前位置是否有特定元素"><a href="#获取当前位置是否有特定元素" class="headerlink" title="获取当前位置是否有特定元素"></a>获取当前位置是否有特定元素</h2><hr>
+<ul>
 <li>给需要检测的元素绑定id或者自定义属性</li>
 <li>通过不断获取当前元素父元素，直至获取成功（通过自定义属性判断）或者元素为body</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnGetTable</span>(<span class="params">oEl</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">null</span> !== oEl &amp;&amp; $(oEl).attr(<span class="string">"自定义属性"</span>) !== <span class="string">"特定属性值"</span> &amp;&amp; target.tagName !== <span class="string">"BODY"</span>) &#123;</span><br><span class="line">    oEl = oEl.parentElement;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> oEl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="实例：下拉菜单点击外围自动关闭"><a href="#实例：下拉菜单点击外围自动关闭" class="headerlink" title="实例：下拉菜单点击外围自动关闭"></a>实例：下拉菜单点击外围自动关闭</h3><ul>
+<h2 id="实例：下拉菜单点击外围自动关闭"><a href="#实例：下拉菜单点击外围自动关闭" class="headerlink" title="实例：下拉菜单点击外围自动关闭"></a>实例：下拉菜单点击外围自动关闭</h2><hr>
+<ul>
 <li>通过点击当前元素时绑定到事件</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.addEventListener) &#123;</span><br><span class="line">  element.addEventListener(event, clickOutside);<span class="comment">//IE之外的绑定事件方法</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  element.attachEvent(event, clickOutside);<span class="comment">//IE </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -125,7 +127,8 @@ var _hmt = _hmt || [];
 <li>clickOutside对象维护队列，该队列对象为id和callback事件</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickOutside</span>(<span class="params"></span>) </span>&#123;	</span><br><span class="line">  <span class="keyword">var</span> list = &#123;&#125;; <span class="comment">//队列, 对象为id和callback事件</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">id, cb</span>) </span>&#123;</span><br><span class="line">    list.id.push(id); <span class="comment">//id队列</span></span><br><span class="line">    list.cb[id] = cb; <span class="comment">//callback事件队列</span></span><br><span class="line">    <span class="comment">//绑定点击事件</span></span><br><span class="line">    $(<span class="built_in">document</span>).off(<span class="string">"click"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> e = e || <span class="built_in">window</span>.event,</span><br><span class="line">        eventX = e.pageX - scrollX || e.clientX,</span><br><span class="line">        eventY = e.pageY - scrollY || e.clientY,</span><br><span class="line">        target = <span class="built_in">document</span>.elementFromPoint(eventX, eventY),</span><br><span class="line">        id = $(target).attr(<span class="string">"id"</span>);</span><br><span class="line">      <span class="comment">//判断当前事件位置是否有ID队列里元素</span></span><br><span class="line">      <span class="keyword">while</span> (list.id.indexOf(id) == <span class="number">-1</span> &amp;&amp; target.tagName != <span class="string">"BODY"</span>) &#123;</span><br><span class="line">        target = target.parentElement;</span><br><span class="line">        id = $(target).attr(<span class="string">"id"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//若有相关元素，则调用对应callback事件，完了移出队列</span></span><br><span class="line">      <span class="keyword">for</span> (i <span class="keyword">in</span> list.id) &#123;</span><br><span class="line">        <span class="keyword">if</span> (list.id[i] != id) &#123;</span><br><span class="line">          list.cb[list.id[i]]();</span><br><span class="line">          list.cb.splice(list.id[i], <span class="number">1</span>);</span><br><span class="line">          list.id.splice(i, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//若队列为空，关闭事件绑定</span></span><br><span class="line">      <span class="keyword">if</span> (!list.id.length) $(<span class="built_in">document</span>).off(<span class="string">"click"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>解决办法很多，优化方法也很多，代码都是在一次又一次重构和提炼中变得出彩的呢。</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><hr>
+<p>解决办法很多，优化方法也很多，代码都是在一次又一次重构和提炼中变得出彩的呢。</p>
   
 	</div>
 	<div class="author-right">
@@ -188,7 +191,7 @@ var _hmt = _hmt || [];
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定鼠标事件"><span class="toc-number">1.</span> <span class="toc-text">绑定鼠标事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取鼠标坐标"><span class="toc-number">2.</span> <span class="toc-text">获取鼠标坐标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算鼠标位置"><span class="toc-number">3.</span> <span class="toc-text">计算鼠标位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取当前位置是否有特定元素"><span class="toc-number">4.</span> <span class="toc-text">获取当前位置是否有特定元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例：下拉菜单点击外围自动关闭"><span class="toc-number">5.</span> <span class="toc-text">实例：下拉菜单点击外围自动关闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束语"><span class="toc-number">6.</span> <span class="toc-text">结束语</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用坐标相关属性"><span class="toc-number">1.</span> <span class="toc-text">常用坐标相关属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定鼠标事件"><span class="toc-number">2.</span> <span class="toc-text">绑定鼠标事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取鼠标坐标"><span class="toc-number">3.</span> <span class="toc-text">获取鼠标坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算鼠标位置"><span class="toc-number">4.</span> <span class="toc-text">计算鼠标位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取当前位置是否有特定元素"><span class="toc-number">5.</span> <span class="toc-text">获取当前位置是否有特定元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例：下拉菜单点击外围自动关闭"><span class="toc-number">6.</span> <span class="toc-text">实例：下拉菜单点击外围自动关闭</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">7.</span> <span class="toc-text">结束语</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -201,7 +204,15 @@ var _hmt = _hmt || [];
 			<ul class="archive-list">
 			
 				<li class="archive-list-item">
+					<a class="archive-list-link" href="/2016/06/20/responsive-waterfall/" title="jQuery响应式瀑布流">jQuery响应式瀑布...</a>
+				</li>
+			
+				<li class="archive-list-item">
 					<a class="archive-list-link" href="/2016/06/19/drag-and-drop/" title="做一个拖放功能的自定义页面">做一个拖放功能的自定义...</a>
+				</li>
+			
+				<li class="archive-list-item">
+					<a class="archive-list-link" href="/2016/06/19/position-object/" title="js判断某个位置是否特定元素">js判断某个位置是否特...</a>
 				</li>
 			
 				<li class="archive-list-item">
@@ -209,19 +220,15 @@ var _hmt = _hmt || [];
 				</li>
 			
 				<li class="archive-list-item">
-					<a class="archive-list-link" href="/2016/06/20/responsive-waterfall/" title="jQuery响应式瀑布流">jQuery响应式瀑布...</a>
-				</li>
-			
-				<li class="archive-list-item">
 					<a class="archive-list-link" href="/2016/06/21/picture-align/" title="jQuery插件--图片居中对齐">jQuery插件--图...</a>
 				</li>
 			
 				<li class="archive-list-item">
-					<a class="archive-list-link" href="/2016/06/18/first-blog/" title="前端在变，然而热情不变">前端在变，然而热情不变</a>
+					<a class="archive-list-link" href="/2016/06/24/front-end-getting-started/" title="我的前端入门之路">我的前端入门之路</a>
 				</li>
 			
 				<li class="archive-list-item">
-					<a class="archive-list-link" href="/2016/06/19/position-object/" title="js判断某个位置是否特定元素">js判断某个位置是否特...</a>
+					<a class="archive-list-link" href="/2016/06/18/first-blog/" title="前端在变，然而热情不变">前端在变，然而热情不变</a>
 				</li>
 			
 			</ul>
@@ -231,7 +238,7 @@ var _hmt = _hmt || [];
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">7</span></li></ul>
   </div>
 
 
@@ -249,7 +256,7 @@ var _hmt = _hmt || [];
 			</li>
 		
 			<li class="archive-list-item">
-				<a class="archive-list-link" href="/categories/web乱炖/" title="web乱炖">web乱炖<sup>1</sup></a>
+				<a class="archive-list-link" href="/categories/web乱炖/" title="web乱炖">web乱炖<sup>2</sup></a>
 			</li>
 		
 		</ul>
@@ -260,6 +267,10 @@ var _hmt = _hmt || [];
 <div class="archiveslist">
 	<p class="asidetitle">标签</p>
 		<ul class="archive-list">
+		
+			<li class="archive-list-item">
+				<a class="archive-list-link" href="/tags/分享/" title="分享">分享<sup>1</sup></a>
+			</li>
 		
 			<li class="archive-list-item">
 				<a class="archive-list-link" href="/tags/原创部件/" title="原创部件">原创部件<sup>1</sup></a>

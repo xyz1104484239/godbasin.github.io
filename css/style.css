@@ -890,7 +890,8 @@ article .article-content h6 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0.3em 0;
-  margin: 0.5em 0;
+  margin-top: 0.8em;
+  margin-bottom: 0.2em;
 }
 article .article-content h1 >code,
 article .article-content h2 >code,
@@ -939,17 +940,17 @@ article .article-content ol {
 @media only screen and (min-width: 768px) {
   article .article-content ul,
   article .article-content ol {
-    padding-left: 1em;
+    padding-left: 1.5em;
   }
 }
 article .article-content ul li {
   list-style: disc;
   text-align: match-parent;
-  margin: 0.5em 0;
+  margin: 0;
 }
 article .article-content ol li {
   list-style-type: decimal;
-  margin: 0.5em 0;
+  margin: 0;
 }
 article .article-content dl dt {
   font-weight: blod;
@@ -972,11 +973,13 @@ article .article-content em code {
 article .article-content p {
   font-size: font-size-5;
   line-height: 1.7;
-  margin: 0.7em 0;
+  margin-top: 0.7em;
+  margin-bottom: 0.2em;
 }
 @media only screen and (min-width: 1024px) {
   article .article-content p {
-    margin: 1.2em 0;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
   }
 }
 article .article-content img,
@@ -1383,6 +1386,7 @@ section.comment {
 }
 .toc-article strong {
   padding: 0.3em 0;
+  line-height: 1.5em;
 }
 #toc {
   line-height: 1em;
@@ -1394,6 +1398,7 @@ section.comment {
 }
 #toc .toc li {
   list-style-type: none;
+  line-height: 1.3em;
 }
 #toc .toc-child {
   padding-left: 1.5em;
