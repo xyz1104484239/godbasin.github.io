@@ -1,10 +1,10 @@
 
- <!DOCTYPE HTML>
+  <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
-    <title>categories | Here. There.</title>
+    <title>Archives: 2016 | Here. There.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="被删">
@@ -66,27 +66,40 @@ var _hmt = _hmt || [];
 
       </header>
       <div id="container">
-          
+        
+
 <div class="archive-title" >
-<h2 class="category-icon">分类</h2>
-<div class="archiveslist archive-float clearfix">
-
-  <li><a class="archive-list-link" data-src="/categories/CSS炒饭/" href="#CSS炒饭" title="CSS炒饭">CSS炒饭<sup>2</sup></a></li>
-
-  <li><a class="archive-list-link" data-src="/categories/angular混搭/" href="#angular混搭" title="angular混搭">angular混搭<sup>1</sup></a></li>
-
-  <li><a class="archive-list-link" data-src="/categories/jQuery杂烩/" href="#jQuery杂烩" title="jQuery杂烩">jQuery杂烩<sup>3</sup></a></li>
-
-  <li><a class="archive-list-link" data-src="/categories/js什锦/" href="#js什锦" title="js什锦">js什锦<sup>3</sup></a></li>
-
-  <li><a class="archive-list-link" data-src="/categories/web乱炖/" href="#web乱炖" title="web乱炖">web乱炖<sup>2</sup></a></li>
- 
+  <h2 class="archive-icon">2016</h2>
+  
+  <div class="archiveslist archive-float clearfix">
+   <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">9</span></li></ul>
+ </div>
+  
 </div>
-</div>
-<div id="main" class="all-list-box"><!--class: archive-part-->
-<div class=""></div><!--class: all-list-box-->
-</div>
+<div id="main" class="all-list-box clearfix"><!--class: archive-part-->
+  <div id="archive-page" class=""><!--class: all-list-box-->
 
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2016/06/18/first-blog/" title="前端在变，然而热情不变" itemprop="url">
+  
+    <h1 itemprop="name">前端在变，然而热情不变</h1>
+    
+     
+       <p itemprop="description" >本文作为本骚年正式开始技术博客的开篇，当然先渲染一下快乐的氛围。接着会大致介绍搭建这个博客的步骤。</p>
+      
+    
+    <time datetime="2016-06-17T19:59:57.000Z" itemprop="datePublished">2016-06-18</time>
+  </a>
+</section>
+
+
+  <nav id="page-nav" class="clearfix archive-nav">
+    <a class="extend prev" rel="prev" href="/archives/2016/">&laquo; Prev</a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span>
+  </nav>
+
+  </div>
+</div>
 
       </div>
       <footer><div id="footer" >
@@ -150,24 +163,6 @@ $(document).ready(function(){
 
 
 
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var list    = $('.archive-title a'),
-      box     = $('.all-list-box'),
-      first   = $('.archive-title a:first-of-type');
-      box.load(first.attr('data-src').toString()+' #archive-page');
-      first.addClass('current');
-  list.each(function(){
-    $(this).click(function(){
-      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
-      box.load(listSrc);
-      list.removeClass('current');
-      $(this).addClass('current');
-     });  
-    });
-  }); 
-</script>
 
 
 
