@@ -2,7 +2,8 @@
 ---      
 ### 被删前端博客                    
                             
-                        
+                 
+> [《Angular使用笔记7--使用File API编写预览图片的指令》](https://godbasin.github.io/2016/07/22/angular-note-7-load-image/)                                      
 > [《Angular使用笔记6--编写异步提交带图片的表单服务》](https://godbasin.github.io/2016/07/17/angular-note-6-asyncchronous-submit-form/)                                                          
 > [《Angular使用笔记5--作用域简单分析以及制作index页面》](https://godbasin.github.io/2016/07/16/angular-note-5-fullfill-index/)                           
 > [《Angular使用笔记4--制作头部指令》](https://godbasin.github.io/2016/07/10/angular-note-4-make-header-directive/)                                                   
