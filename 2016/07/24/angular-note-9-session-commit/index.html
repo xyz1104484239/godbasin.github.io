@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>前端在变，然而热情不变 | Here. There.</title>
+    <title>Angular使用笔记9-使用sessionStorage判断是否已登录 | Here. There.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="被删">
     
-    <meta name="description" content="本文作为本骚年正式开始技术博客的开篇，当然先渲染一下快乐的氛围。接着会大致介绍搭建这个博客的步骤。">
+    <meta name="description" content="最近的一个项目使用AngularJS(v1.2.6)作为前端的框架，《Angular使用笔记》系列用于记录过程中的一些使用和解决方法。本文记录使用sessionStorage判断是否已登录并进行跳转的过程。">
     
     
     
@@ -71,15 +71,15 @@ var _hmt = _hmt || [];
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/06/18/first-blog/" title="前端在变，然而热情不变" itemprop="url">前端在变，然而热情不变</a>
+      <a href="/2016/07/24/angular-note-9-session-commit/" title="Angular使用笔记9-使用sessionStorage判断是否已登录" itemprop="url">Angular使用笔记9-使用sessionStorage判断是否已登录</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://godbasin.github.io" title="被删">被删</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-06-17T19:59:57.000Z" itemprop="datePublished">2016-06-18</time>
-    更新日期:<time datetime="2016-06-24T13:57:16.000Z" itemprop="dateModified">2016-06-24</time>
+    <time datetime="2016-07-24T01:32:34.000Z" itemprop="datePublished">2016-07-24</time>
+    更新日期:<time datetime="2016-07-24T01:52:28.000Z" itemprop="dateModified">2016-07-24</time>
     
   </p>
 </header>
@@ -88,39 +88,50 @@ var _hmt = _hmt || [];
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先为第一篇博客开心一下"><span class="toc-number">1.</span> <span class="toc-text">首先为第一篇博客开心一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建步骤"><span class="toc-number">3.</span> <span class="toc-text">搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册一个github账户"><span class="toc-number">3.1.</span> <span class="toc-text">注册一个github账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建github-pages"><span class="toc-number">3.2.</span> <span class="toc-text">创建github pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装载Hexo"><span class="toc-number">3.3.</span> <span class="toc-text">装载Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择自己喜欢的主题"><span class="toc-number">3.4.</span> <span class="toc-text">选择自己喜欢的主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对模板和样式进行修改"><span class="toc-number">3.5.</span> <span class="toc-text">对模板和样式进行修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择喜欢的插件和挂件，统计等"><span class="toc-number">3.6.</span> <span class="toc-text">选择喜欢的插件和挂件，统计等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到github上"><span class="toc-number">3.7.</span> <span class="toc-text">部署到github上</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此处粘贴Hexo常用命令"><span class="toc-number">4.</span> <span class="toc-text">此处粘贴Hexo常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">5.</span> <span class="toc-text">结束语</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sessionStorage"><span class="toc-number">1.</span> <span class="toc-text">sessionStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5新特性-SessionStorage"><span class="toc-number">1.1.</span> <span class="toc-text">HTML5新特性: SessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用sessionStorage"><span class="toc-number">1.2.</span> <span class="toc-text">使用sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sessionStorage-localStorage-Cookie的异同"><span class="toc-number">1.3.</span> <span class="toc-text">sessionStorage/localStorage/Cookie的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖注入使用filter"><span class="toc-number">1.4.</span> <span class="toc-text">依赖注入使用filter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用sessionStorage判断是否已登录"><span class="toc-number">2.</span> <span class="toc-text">使用sessionStorage判断是否已登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#登录提交设置sessionStorage"><span class="toc-number">2.1.</span> <span class="toc-text">登录提交设置sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在页面中添加判断"><span class="toc-number">2.2.</span> <span class="toc-text">在页面中添加判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#退出时注销登录信息"><span class="toc-number">2.3.</span> <span class="toc-text">退出时注销登录信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">3.</span> <span class="toc-text">结束语</span></a></li></ol>
 		</div>
 		
-		<p>本文作为本骚年正式开始技术博客的开篇，当然先渲染一下快乐的氛围。接着会大致介绍搭建这个博客的步骤。<br><a id="more"></a></p>
-<h2 id="首先为第一篇博客开心一下"><a href="#首先为第一篇博客开心一下" class="headerlink" title="首先为第一篇博客开心一下"></a>首先为第一篇博客开心一下</h2><hr>
-<p>或许在两个月前，本骚年还生活在远离github以及各种社区论坛的宅世界里。但即使是那样一个几乎与世隔绝的环境下，也依然满怀学习前端的热情。<br><!----><br>那时候做的事情不多，基本是些与jQuery打架，努力想解剖它，最后又握手言和的过家家。<br><!----><br>工作原因慢慢用上一些工具，也挑战自己上了框架、试着对代码进行抽离又封装，到如今在小伙伴的怂恿下试着在github搭博客。<br><!----><br>进步不得说不大，对于懒癌晚期只沉迷于学习远离、学习代码解析的骚年来说，各种各样的工具毫无疑问又增加了需要学习的范围。但，既来之则安之，有句话叫学无止境不是吗，要相信自己，哈哈。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><hr>
-<p>关于创建github博客：<br><a href="http://blog.csdn.net/renfufei/article/details/37725057/" target="_blank" rel="external">http://blog.csdn.net/renfufei/article/details/37725057</a><br>Hexo搭建博客教程:<br><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">http://ibruce.info/2013/11/22/hexo-your-blog</a><br>知乎：Hexo好看的主题：<br><a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">https://www.zhihu.com/question/24422335</a></p>
-<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><hr>
-<h3 id="注册一个github账户"><a href="#注册一个github账户" class="headerlink" title="注册一个github账户"></a>注册一个github账户</h3><h3 id="创建github-pages"><a href="#创建github-pages" class="headerlink" title="创建github pages"></a>创建github pages</h3><blockquote>
-<p>具体可参考Hexo搭建博客教程:<br><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">http://ibruce.info/2013/11/22/hexo-your-blog</a></p>
+		<p>最近的一个项目使用AngularJS(v1.2.6)作为前端的框架，《Angular使用笔记》系列用于记录过程中的一些使用和解决方法。<br>本文记录使用sessionStorage判断是否已登录并进行跳转的过程。<br><a id="more"></a></p>
+<p>前面篇章我们已经讲述过公用信息的获取和设置方法，具体可以查看<a href="https://godbasin.github.io/2016/07/09/angular-note-3-common-info-manage/">《Angular使用笔记3–公用信息的管理》</a>。<br>在这里我们使用sessionStorage来记录会话，如果没登录则自行跳转至登录页面。</p>
+<h2 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h2><hr>
+<h3 id="HTML5新特性-SessionStorage"><a href="#HTML5新特性-SessionStorage" class="headerlink" title="HTML5新特性: SessionStorage"></a>HTML5新特性: SessionStorage</h3><ul>
+<li>sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁</li>
+<li>sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储</li>
+<li>可利用SessionStorage保存一些会话类公共信息</li>
+</ul>
+<h3 id="使用sessionStorage"><a href="#使用sessionStorage" class="headerlink" title="使用sessionStorage"></a>使用sessionStorage</h3><blockquote>
+<p>检测兼容性：window.sessionStorage<br>设置session项：sessionStorage.setItem(key, value)<br>获取session项：sessionStorage.getItem(key)<br>删除session项：sessionStorage.removeItem(key)<br>清除所有session信息：sessionStorage.clear()<br>sessionStorage的项目数：sessionStorage.length</p>
 </blockquote>
-<h3 id="装载Hexo"><a href="#装载Hexo" class="headerlink" title="装载Hexo"></a>装载Hexo</h3><blockquote>
-<p>该过程需要安装node以及Git，具体可参考Hexo搭建博客教程:<br><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">http://ibruce.info/2013/11/22/hexo-your-blog</a></p>
-</blockquote>
-<h3 id="选择自己喜欢的主题"><a href="#选择自己喜欢的主题" class="headerlink" title="选择自己喜欢的主题"></a>选择自己喜欢的主题</h3><blockquote>
-<p>Hexo主题可参考知乎：Hexo好看的主题：<br><a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">https://www.zhihu.com/question/24422335</a></p>
-</blockquote>
-<h3 id="对模板和样式进行修改"><a href="#对模板和样式进行修改" class="headerlink" title="对模板和样式进行修改"></a>对模板和样式进行修改</h3><blockquote>
-<p>Hexo装载的模板为ejs，炒鸡好懂的</p>
-</blockquote>
-<h3 id="选择喜欢的插件和挂件，统计等"><a href="#选择喜欢的插件和挂件，统计等" class="headerlink" title="选择喜欢的插件和挂件，统计等"></a>选择喜欢的插件和挂件，统计等</h3><blockquote>
-<p>Hexo搭建博客教程里面有提及相关的部署</p>
-</blockquote>
-<h3 id="部署到github上"><a href="#部署到github上" class="headerlink" title="部署到github上"></a>部署到github上</h3><blockquote>
-<p>设置./_config.yml中Deployment相关，然后hexo deploy<br>注意请先生成静态文件再进行部署哦<br>若部署失败提示’ERROR Deployer not found: github’, 是因为Hexo3.0以后type需要改成git<br>1.安装 npm install hexo-deployer-git –save<br>2.将deploy 的 type由github改为git</p>
-</blockquote>
-<h2 id="此处粘贴Hexo常用命令"><a href="#此处粘贴Hexo常用命令" class="headerlink" title="此处粘贴Hexo常用命令"></a>此处粘贴Hexo常用命令</h2><hr>
-<blockquote>
-<p>hexo new “postName”  —新建文章<br>hexo new page “pageName”  —新建页面<br>hexo clean  —清除缓存 网页正常情况下可以忽略此条命令<br>hexo generate  —生成静态页面至public目录<br>hexo server  —开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy  —将.deploy目录部署到GitHub</p>
-</blockquote>
+<h3 id="sessionStorage-localStorage-Cookie的异同"><a href="#sessionStorage-localStorage-Cookie的异同" class="headerlink" title="sessionStorage/localStorage/Cookie的异同"></a>sessionStorage/localStorage/Cookie的异同</h3><ul>
+<li>sessionStorage数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时，之前的存储已经被清除</li>
+<li>localStorage是一个持久化的存储，它并不局限于会话</li>
+<li>Cookie非常小，它的大小限制为4KB左右（sessionStorage和localStorage为5M左右），可设置失效时间，默认是关闭浏览器后失效</li>
+</ul>
+<h3 id="依赖注入使用filter"><a href="#依赖注入使用filter" class="headerlink" title="依赖注入使用filter"></a>依赖注入使用filter</h3><ul>
+<li>需使用依赖注入方法将$filter注入到该controller中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var new_value = $filter(&apos;filtername&apos;)(old_value);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="使用sessionStorage判断是否已登录"><a href="#使用sessionStorage判断是否已登录" class="headerlink" title="使用sessionStorage判断是否已登录"></a>使用sessionStorage判断是否已登录</h2><hr>
+<h3 id="登录提交设置sessionStorage"><a href="#登录提交设置sessionStorage" class="headerlink" title="登录提交设置sessionStorage"></a>登录提交设置sessionStorage</h3><p>登录的时候将账户信息添加进sessionStorage，这里为方便直接记录账户名。当然在实际使用中一般都是登录成功返回信息时进行添加，然后再进行跳转。</p>
+<ul>
+<li>在LoginCtrl控制器中跳转前加入以下代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(&apos;username&apos;, $scope.username);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="在页面中添加判断"><a href="#在页面中添加判断" class="headerlink" title="在页面中添加判断"></a>在页面中添加判断</h3><p>除了login页面之外，其他页面都需要进行判断，方法可以有以下几种：</p>
+<ul>
+<li>在每个页面的控制器中添加判断</li>
+<li>在头部控制器中添加判断（除login页面之外都有头部指令）</li>
+<li>集成服务，在服务中进行判断，然后在控制器中注入服务并使用</li>
+</ul>
+<p>这里我们在头部控制器里加入判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//判断是否已经登录，未登录则进行跳转</span><br><span class="line">if (!sessionStorage.getItem(&apos;username&apos;)) &#123;</span><br><span class="line">  alert(&quot;请登录&quot;);</span><br><span class="line">  location.href = &apos;index.html#/&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="退出时注销登录信息"><a href="#退出时注销登录信息" class="headerlink" title="退出时注销登录信息"></a>退出时注销登录信息</h3><p>我们之前在头部下拉菜单上添加了退出选项，现在我们需要在跳转前注销登录信息。</p>
+<ul>
+<li>绑定ng-click事件</li>
+<li>添加click选项，值为funxtion执行函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$scope.usermenus = [&#123;</span><br><span class="line">  text: &apos;退出&apos;, //text用于储存该菜单显示名称</span><br><span class="line">  click: function() &#123;</span><br><span class="line">    sessionStorage.clear(); //清除登录信息</span><br><span class="line">    location.href = &apos;index.html#/login&apos;; //设定该菜单跳转路由</span><br><span class="line">  &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><hr>
-<p>然后一不小心就玩通宵了，赶紧补眠去。<br>Good Day!</p>
+<p>至此，我们大概完成了一个较完整的项目，当然实际中工程远大于本骚年所介绍的，遇到的问题也远比这些复杂。但没关系，困难都是一步步克服的，相信大家能很好地解决掉他们。<br><a href="https://github.com/godbasin/godbasin.github.io/tree/blog-codes/angular-notes/8-create-filter" target="_blank" rel="external">此处查看项目代码（仅包含app部分）</a><br><a href="http://o9grhhyar.bkt.clouddn.com/9-session-commit/index.html#/index" target="_blank" rel="external">此处查看页面效果</a></p>
   
 	</div>
 	<div class="author-right">
@@ -132,20 +143,20 @@ var _hmt = _hmt || [];
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/教程/">教程</a>
+  <span></span> <a href="/tags/笔记/">笔记</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/web乱炖/">web乱炖</a>
+  <a class="article-category-link" href="/categories/angular混搭/">angular混搭</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="https://godbasin.github.io/2016/06/18/first-blog/" data-title="前端在变，然而热情不变 | Here. There." data-tsina="null" class="share clearfix">
+  <div data-url="https://godbasin.github.io/2016/07/24/angular-note-9-session-commit/" data-title="Angular使用笔记9-使用sessionStorage判断是否已登录 | Here. There." data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -154,14 +165,14 @@ var _hmt = _hmt || [];
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/06/19/position-object/" title="js判断某个位置是否特定元素">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  js判断某个位置是否特定元素</span>
+
+<div class="next">
+<a href="/2016/07/23/angular-note-8-create-filter/"  title="Angular使用笔记8--使用filter服务进行格式转换">
+ <strong>NEXT:</strong><br/> 
+ <span>Angular使用笔记8--使用filter服务进行格式转换
+</span>
 </a>
 </div>
-
 
 </nav>
 
@@ -175,7 +186,7 @@ var _hmt = _hmt || [];
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先为第一篇博客开心一下"><span class="toc-number">1.</span> <span class="toc-text">首先为第一篇博客开心一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建步骤"><span class="toc-number">3.</span> <span class="toc-text">搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册一个github账户"><span class="toc-number">3.1.</span> <span class="toc-text">注册一个github账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建github-pages"><span class="toc-number">3.2.</span> <span class="toc-text">创建github pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装载Hexo"><span class="toc-number">3.3.</span> <span class="toc-text">装载Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择自己喜欢的主题"><span class="toc-number">3.4.</span> <span class="toc-text">选择自己喜欢的主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对模板和样式进行修改"><span class="toc-number">3.5.</span> <span class="toc-text">对模板和样式进行修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择喜欢的插件和挂件，统计等"><span class="toc-number">3.6.</span> <span class="toc-text">选择喜欢的插件和挂件，统计等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到github上"><span class="toc-number">3.7.</span> <span class="toc-text">部署到github上</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此处粘贴Hexo常用命令"><span class="toc-number">4.</span> <span class="toc-text">此处粘贴Hexo常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">5.</span> <span class="toc-text">结束语</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sessionStorage"><span class="toc-number">1.</span> <span class="toc-text">sessionStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5新特性-SessionStorage"><span class="toc-number">1.1.</span> <span class="toc-text">HTML5新特性: SessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用sessionStorage"><span class="toc-number">1.2.</span> <span class="toc-text">使用sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sessionStorage-localStorage-Cookie的异同"><span class="toc-number">1.3.</span> <span class="toc-text">sessionStorage/localStorage/Cookie的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖注入使用filter"><span class="toc-number">1.4.</span> <span class="toc-text">依赖注入使用filter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用sessionStorage判断是否已登录"><span class="toc-number">2.</span> <span class="toc-text">使用sessionStorage判断是否已登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#登录提交设置sessionStorage"><span class="toc-number">2.1.</span> <span class="toc-text">登录提交设置sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在页面中添加判断"><span class="toc-number">2.2.</span> <span class="toc-text">在页面中添加判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#退出时注销登录信息"><span class="toc-number">2.3.</span> <span class="toc-text">退出时注销登录信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">3.</span> <span class="toc-text">结束语</span></a></li></ol>
   </div>
 
 <div id="asidepart">

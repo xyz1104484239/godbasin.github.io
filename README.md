@@ -3,6 +3,7 @@
 ### 被删前端博客                    
                             
                         
+> [《Angular使用笔记9-使用sessionStorage判断是否已登录》](https://godbasin.github.io/2016/07/24/angular-note-9-session-commit/)                   
 > [《Angular使用笔记8--使用filter服务进行格式转换》](https://godbasin.github.io/2016/07/23/angular-note-8-create-filter/)                                                     
 > [《Angular使用笔记7--使用File API编写预览图片的指令》](https://godbasin.github.io/2016/07/22/angular-note-7-load-image/)                                      
 > [《Angular使用笔记6--编写异步提交带图片的表单服务》](https://godbasin.github.io/2016/07/17/angular-note-6-asyncchronous-submit-form/)                                                          
